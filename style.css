@@ -98,9 +98,9 @@ body{
 
 .logo img{
 
-    width:46px;
+    width:56px;
 
-    height:46px;
+    height:56px;
 
     object-fit:contain;
 
@@ -189,7 +189,7 @@ body{
 
 .hero-logo{
 
-    width:170px;
+    width:270px;
 
     max-width:60%;
 
