@@ -1148,3 +1148,32 @@ cursor:pointer;
     }
 
 }
+
+@media (max-width:768px){
+
+    .navbar{
+        padding:0 16px;
+    }
+
+    .logo span{
+        display:none;
+    }
+
+    .logo img{
+        width:40px;
+        height:40px;
+    }
+
+    .nav-menu{
+        gap:14px;
+    }
+
+    .nav-menu a{
+        font-size:14px;
+    }
+
+    .cart-btn{
+        font-size:22px;
+    }
+
+}
