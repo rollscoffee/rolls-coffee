@@ -175,7 +175,7 @@ const products = [
     image: "images/products/coldbrew.jpg",
 
     description:
-    "Cold extraction selama 18 jam.",
+    "Cold extraction selama 12 jam.",
 
     sizes: {
         "250 ml": 11000,
@@ -189,8 +189,33 @@ const products = [
     coffeeBean: true,
 
     bestSeller: false
-}
+},
 
+{
+    id: 8,
+
+    name: "Classic Latte",
+
+    category: "Coffee",
+
+    image: "images/menu/classic-latte.jpg",
+
+    badge: "New",
+
+    description: "Espresso dipadukan dengan fresh milk menghasilkan rasa kopi yang lembut, creamy, dan seimbang.",
+
+    sizes: {
+        "250 ml": 18000,
+        "500 ml": 35000,
+        "1 L": 70000
+    },
+
+    coffeeBean: true,
+
+    sugar: true,
+
+    coffeeLevel: true
+}
 ];
 
 const coffeeBeans = [
@@ -202,12 +227,11 @@ const coffeeBeans = [
 const sugarLevels = [
     "No Sugar",
 "Less Sugar",
-"Normal Sugar",
-"Extra Sugar"
+"Normal Sugar"
 ];
 
 const coffeeLevels = [
-    "Less Coffee",
+"Less Coffee",
 "Normal Coffee",
 "Strong Coffee (+Rp4.000)"
 ];
