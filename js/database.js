@@ -122,7 +122,7 @@ const products = [
     image: "images/products/matcha.jpg",
 
     badge: "New",
- 
+
     description:
     "Japanese Matcha premium.",
 
@@ -201,6 +201,8 @@ const products = [
     category: "Coffee",
 
     image: "images/menu/classic-latte.jpg",
+
+    badge: "New",
 
     description: "Espresso dipadukan dengan fresh milk menghasilkan rasa kopi yang lembut, creamy, dan seimbang.",
 
