@@ -64,9 +64,11 @@ function renderCart() {
 
         <small>${item.size}</small><br>
 
-        <small>${item.bean ?? ""}</small><br>
+        ${item.bean ? `<small>Bean : ${item.bean}</small><br>` : ""}
 
-        <small>${item.sugar ?? ""}</small><br>
+        ${item.sugar ? `<small>Sugar : ${item.sugar}</small><br>` : ""}
+
+        ${item.coffee ? `<small>Coffee : ${item.coffee}</small><br>` : ""}
 
         <div class="cart-bottom">
 
