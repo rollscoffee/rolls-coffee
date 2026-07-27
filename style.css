@@ -487,6 +487,62 @@ body{
 
 }
 
+/* ===========================
+ *  PRODUCT SIZE
+ = *========================== */
+
+.product-size{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ===========================
+ *  SIZE BUTTON
+ = *========================== */
+
+.size-btn{
+
+    flex:1;
+
+    padding:10px;
+
+    border:1px solid #444;
+
+    background:#222;
+
+    color:#fff;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.size-btn:hover{
+
+    border-color:#d8b26e;
+
+}
+
+.size-btn.active{
+
+    background:#d8b26e;
+
+    color:#111;
+
+    border-color:#d8b26e;
+
+}
+
 /* ==========================================
  *  MODAL PREMIUM
  = *========================================= */
