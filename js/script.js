@@ -2,7 +2,7 @@
  R olls Coffee  *
  ========================================== */
 
-const menuGrid = document.getElementById("menu-grid");
+const menuGrid = document.getElementById("product-grid");
 
 function rupiah(number) {
     return "Rp" + number.toLocaleString("id-ID");

@@ -10,7 +10,8 @@ function addToCart(item){
     cartItem.size === item.size &&
     cartItem.bean === item.bean &&
     cartItem.sugar === item.sugar &&
-    cartItem.coffee === item.coffee
+    cartItem.coffee === item.coffee &&
+    cartItem.note === item.note
 
     );
 

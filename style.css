@@ -255,31 +255,34 @@ body{
 /* ===========================
  *  MENU
  = *========================== */
-
 .menu{
 
     padding:100px 0;
 
+    background:
+    linear-gradient(
+        rgba(0,0,0,.68),
+                    rgba(0,0,0,.75)
+    ),
+    url("images/background/menu-bg.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
 }
-
-.menu h2{
-
-    text-align:center;
-
-    font-size:40px;
-
-    margin-bottom:10px;
-
-}
-
 .subtitle{
-
-    text-align:center;
-
-    color:#bbb;
-
-    margin-bottom:50px;
-
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+    color: rgba(255,255,255,.85);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    letter-spacing: .5px;
 }
 
 /* ===========================
@@ -1181,3 +1184,5 @@ cursor:pointer;
     }
 
 }
+
+

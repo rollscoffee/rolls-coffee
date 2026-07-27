@@ -11,7 +11,7 @@ const products = [
 
         category: "Coffee",
 
-        image: "images/products/palm-sugar.jpg",
+        image: "images/menu/palm-sugar.png",
 
         description:
         "Espresso, fresh milk dan gula aren premium.",
