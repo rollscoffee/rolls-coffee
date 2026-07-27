@@ -119,6 +119,8 @@ const products = [
 
     category: "Non Coffee",
 
+    badge: "New",
+ 
     image: "images/products/matcha.jpg",
 
     description:
@@ -199,8 +201,6 @@ const products = [
     category: "Coffee",
 
     image: "images/menu/classic-latte.jpg",
-
-    badge: "New",
 
     description: "Espresso dipadukan dengan fresh milk menghasilkan rasa kopi yang lembut, creamy, dan seimbang.",
 
