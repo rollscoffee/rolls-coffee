@@ -1,6 +1,6 @@
 /* ==========================================
- R olls Coffee  *
- ========================================== */
+   Rolls Coffee
+========================================== */
 
 const menuGrid = document.getElementById("menu-grid");
 
@@ -20,52 +20,47 @@ function renderProducts() {
 
         <div class="product-card">
 
-        ${product.bestSeller
-            ? `<div class="badge best">⭐ Best Seller</div>`
-            : ""}
+            ${product.bestSeller
+                ? `<div class="badge best">⭐ Best Seller</div>`
+                : ""}
 
             <img
-            src="${product.image}"
-            class="product-image"
-            alt="${product.name}">
+                src="${product.image}"
+                class="product-image"
+                alt="${product.name}">
 
             <div class="product-body">
 
-            <span class="product-category">
-            ${product.category}
-            </span>
+                <span class="product-category">
+                    ${product.category}
+                </span>
 
-            <h3>${product.name}</h3>
+                <h3>${product.name}</h3>
 
-            <p>${product.description}</p>
+                <p>${product.description}</p>
 
-            <div class="product-size">
-            ${sizes}
-            </div>
+                <div class="product-price">
+                    ${rupiah(firstPrice)}
+                </div>
 
-            <div class="product-price">
-            ${rupiah(firstPrice)}
-            </div>
-
-            <button
-            class="product-btn"
-            data-id="${product.id}">
-
-            Customize Order
-
-            </button>
+                <button
+                    class="product-btn"
+                    data-id="${product.id}">
+                    Customize Order
+                </button>
 
             </div>
 
-            </div>
+        </div>
 
-            `;
+        `;
 
     });
 
 }
 
 renderProducts();
+
 document.addEventListener("click", (e) => {
 
     if (!e.target.classList.contains("product-btn")) return;
