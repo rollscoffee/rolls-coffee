@@ -16,20 +16,6 @@ function renderProducts() {
 
         const firstPrice = Object.values(product.sizes)[0];
 
-        const sizes = Object.entries(product.sizes)
-        .map(([size, price], index) => {
-
-            return `
-            <button
-            class="size-btn ${index === 0 ? "active" : ""}"
-            data-price="${price}"
-            data-size="${size}">
-            ${size}
-            </button>
-            `;
-
-        }).join("");
-
         menuGrid.innerHTML += `
 
         <div class="product-card">
