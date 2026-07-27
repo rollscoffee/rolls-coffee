@@ -33,9 +33,10 @@ function renderProducts() {
         menuGrid.innerHTML += `
 
         <div class="product-card">
-
         ${product.bestSeller
             ? `<div class="badge best">⭐ Best Seller</div>`
+            : product.badge
+            ? `<div class="badge">${product.badge}</div>`
             : ""}
 
             <img
