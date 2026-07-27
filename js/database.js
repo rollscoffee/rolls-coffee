@@ -55,7 +55,7 @@ const products = [
 
     coffeeBean: true,
 
-    bestSeller: true
+    bestSeller: false
 },
 
 {
@@ -119,7 +119,7 @@ const products = [
 
     category: "Non Coffee",
 
-    image: "images/products/matcha.jpg",
+    image: "images/menu/matcha-latte.png",
 
     badge: "New",
 
