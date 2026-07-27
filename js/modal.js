@@ -16,6 +16,23 @@ const coffeeSection = document.getElementById("coffee-section");
 
 let currentProduct = null;
 let currentPrice = 0;
+
+function updatePrice() {
+
+    let price = currentPrice;
+
+    const selectedCoffee =
+    coffeeOptions.querySelector(".active")?.textContent;
+
+    if (selectedCoffee === "Strong Coffee (+Rp4.000)") {
+        price += EXTRA_SHOT_PRICE;
+    }
+
+    modalPrice.textContent = rupiah(price);
+
+    return price;
+}
+
 function openModal(product) {
 
     currentProduct = product;
@@ -64,7 +81,7 @@ function renderSizeOptions(product) {
 
             currentPrice = price;
 
-            modalPrice.textContent = rupiah(price);
+            updatePrice();
 
         }
 
@@ -78,7 +95,7 @@ function renderSizeOptions(product) {
 
             currentPrice = price;
 
-            modalPrice.textContent = rupiah(price);
+            updatePrice();
 
         });
 
@@ -163,6 +180,10 @@ function createOptionButtons(container, items) {
 
             button.classList.add("active");
 
+            if (container === coffeeOptions) {
+                updatePrice();
+            }
+
         });
 
         container.appendChild(button);
@@ -203,7 +224,7 @@ addCartButton.addEventListener("click", () => {
 
         note: noteInput.value.trim(),
 
-                               price: currentPrice,
+                               price: updatePrice(),
 
                                qty: 1
 
