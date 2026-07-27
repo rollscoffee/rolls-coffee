@@ -230,6 +230,8 @@ addCartButton.addEventListener("click", () => {
 
     };
 
+    console.log(order);
+
     addToCart(order);
 
     closeModalWindow();
