@@ -127,9 +127,9 @@ const products = [
     "Japanese Matcha premium.",
 
     sizes: {
-        "250 ml": 22000,
-        "500 ml": 40000,
-        "1 L": 78000
+        "250 ml": 20000,
+        "500 ml": 35000,
+        "1 L": 70000
     },
 
     sugar: true,
