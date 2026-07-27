@@ -119,10 +119,10 @@ const products = [
 
     category: "Non Coffee",
 
-    badge: "New",
- 
     image: "images/products/matcha.jpg",
 
+    badge: "New",
+ 
     description:
     "Japanese Matcha premium.",
 
