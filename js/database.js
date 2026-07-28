@@ -38,7 +38,7 @@ const products = [
 
     category: "Coffee",
 
-    image: "images/products/butterscotch.jpg",
+    image: "images/menu/butterscotch.png",
 
     description:
     "Espresso dengan creamy butterscotch.",
@@ -65,7 +65,7 @@ const products = [
 
     category: "Coffee",
 
-    image: "images/products/salted-caramel.jpg",
+    image: "images/menu/salted-caramel.png",
 
     description:
     "Espresso dengan salted caramel premium.",
@@ -92,7 +92,7 @@ const products = [
 
     category: "Coffee",
 
-    image: "images/products/caramel.jpg",
+    image: "images/menu/caramel.png",
 
     description:
     "Espresso dan caramel yang lembut.",
@@ -148,7 +148,7 @@ const products = [
 
     category: "Coffee",
 
-    image: "images/products/americano.jpg",
+    image: "images/menu/americano.png",
 
     description:
     "Double espresso dengan air panas.",
@@ -173,9 +173,7 @@ const products = [
     name: "Cold Brew",
 
     category: "Coffee",
-
-    image: "images/products/coldbrew.jpg",
-
+    image: "images/menu/coldbrew.png",
     description:
     "Cold extraction selama 12 jam.",
 
@@ -200,7 +198,7 @@ const products = [
 
     category: "Coffee",
 
-    image: "images/menu/classic-latte.jpg",
+    image: "images/menu/classic-latte.png",
 
     badge: "New",
 
