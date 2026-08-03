@@ -3,16 +3,45 @@
  ========================================== */
 
 const menuGrid = document.getElementById("product-grid");
+const searchInput = document.getElementById("search-input");
 
-function rupiah(number) {
-    return "Rp" + number.toLocaleString("id-ID");
-}
+const filterButtons = document.querySelectorAll(".filter-btn");
 
-function renderProducts() {
+let activeFilter = "all";
+
+function renderProducts(keyword = "", category = "all") {
 
     menuGrid.innerHTML = "";
 
-    products.forEach(product => {
+    const filteredProducts = products.filter(product => {
+
+        const keywordLower = keyword.toLowerCase();
+
+        const matchKeyword =
+        product.name.toLowerCase().includes(keywordLower) ||
+        product.category.toLowerCase().includes(keywordLower);
+
+        const matchCategory =
+        category === "all" ||
+        product.category === category;
+
+        return matchKeyword && matchCategory;
+
+    });
+
+    if(filteredProducts.length === 0){
+
+        menuGrid.innerHTML = `
+        <div class="empty-search">
+        <h3>☕ Menu tidak ditemukan</h3>
+        <p>Coba gunakan kata kunci lain.</p>
+        </div>
+        `;
+
+        return;
+    }
+
+    filteredProducts.forEach(product => {
 
         const firstPrice = Object.values(product.sizes)[0];
 
@@ -61,11 +90,24 @@ function renderProducts() {
 
             <p>${product.description}</p>
 
+            <div class="product-price-row">
+
             <div class="product-price">
 
             <small>Mulai dari</small>
 
             <strong>${rupiah(firstPrice)}</strong>
+
+            </div>
+
+            <button
+            class="quick-add"
+            data-id="${product.id}"
+            title="Tambah cepat">
+
+            <i data-lucide="plus"></i>
+
+            </button>
 
             </div>
 
@@ -84,10 +126,82 @@ function renderProducts() {
             `;
 
     });
-
+    lucide.createIcons();
 }
 
 renderProducts();
+
+if (searchInput) {
+
+    searchInput.addEventListener("input", () => {
+
+        renderProducts(searchInput.value, activeFilter);
+
+    });
+
+}
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        activeFilter = button.dataset.filter;
+
+        renderProducts(searchInput.value, activeFilter);
+
+    });
+
+});
+
+
+document.addEventListener("click", (e) => {
+
+    const quickAddBtn = e.target.closest(".quick-add");
+
+    if (!quickAddBtn) return;
+
+    const id = Number(quickAddBtn.dataset.id);
+
+    const product = products.find(p => p.id === id);
+
+    if (!product) return;
+
+    const firstSize = Object.keys(product.sizes)[0];
+
+    const firstPrice = product.sizes[firstSize];
+
+    addToCart({
+
+        id: product.id,
+
+        name: product.name,
+
+        image: product.image,
+
+        size: firstSize,
+
+        bean: "",
+
+        sugar: "Normal",
+
+        coffee: "Normal",
+
+        note: "",
+
+        qty: 1,
+
+        price: firstPrice
+
+    });
+
+});
+
 document.addEventListener("click", (e) => {
 
     if (!e.target.classList.contains("product-btn")) return;
@@ -99,16 +213,5 @@ document.addEventListener("click", (e) => {
     if (!product) return;
 
     openModal(product);
-
-});
-
-window.addEventListener("scroll", () => {
-
-    const navbar = document.querySelector(".navbar");
-
-    navbar.classList.toggle(
-        "scrolled",
-        window.scrollY > 30
-    );
 
 });

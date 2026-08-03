@@ -7,12 +7,13 @@
 
     <title>Rolls Coffee</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -30,13 +31,13 @@
 
         <ul class="nav-menu">
 
-            <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a class="nav-link" href="#home">Home</a></li>
+            <li><a class="nav-link" href="#menu">Menu</a></li>
+            <li><a class="nav-link" href="#about">About</a></li>
 
             <li>
                 <button id="cart-btn" class="cart-btn">
-                    🛒
+                    <i data-lucide="shopping-cart"></i>
                     <span id="cart-count">0</span>
                 </button>
             </li>
@@ -110,12 +111,42 @@
 <section class="menu" id="menu">
     <div class="container">
 
-        <h2>Our Menu</h2>
+<h2>Our Menu</h2>
 
-        <p class="subtitle">
-            Fresh Coffee • Premium Ingredients • Crafted for Every Mood
-        </p>
+<p class="subtitle">
+    Fresh Coffee • Premium Ingredients • Crafted for Every Mood
+</p>
 
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search-input"
+        placeholder="Cari menu favoritmu...">
+
+</div>
+<div class="filter-group">
+
+    <button class="filter-btn active" data-filter="all">
+        Semua
+    </button>
+
+    <button class="filter-btn" data-filter="Coffee">
+        <i data-lucide="coffee"></i>
+
+        Coffee
+
+    </button>
+
+    <button class="filter-btn" data-filter="Non Coffee">
+
+    <i data-lucide="cup-soda"></i>
+
+    Non Coffee
+
+    </button>
+
+</div>
         <div class="product-grid" id="product-grid">
         </div>
 
@@ -162,7 +193,7 @@
     <!-- =========================
          FOOTER
     ========================== -->
-<footer class="footer">
+    <footer id="contact" class="footer">
 
     <div class="container">
 
@@ -282,13 +313,14 @@
     </div>
 
 </div>
+<div id="cart-overlay"></div>
 <div id="cart-sidebar" class="cart-sidebar">
 
     <div class="cart-header">
 
         <h2>Keranjang</h2>
 
-        <button id="close-cart">✕</button>
+        <button id="close-cart"><i data-lucide="x"></i></button>
 
     </div>
 
@@ -313,12 +345,15 @@
 </div>
 
     <!-- Javascript -->
+    <script src="js/utils.js"></script>
     <script src="js/database.js"></script>
     <script src="js/script.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/checkout.js"></script>
-
+    <script src="js/navbar.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/toast.js"></script>
 
 </body>
 

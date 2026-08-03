@@ -29,6 +29,11 @@ function addToCart(item){
 
     renderCart();
 
+    showToast(
+        "Berhasil",
+        `${item.name} ditambahkan ke keranjang`
+    );
+
 }
 
 const cartItems = document.getElementById("cart-items");
@@ -39,7 +44,23 @@ function renderCart() {
 
     if (cart.length === 0) {
 
-        cartItems.innerHTML = "<p>Keranjang masih kosong.</p>";
+        cartItems.innerHTML = `
+        <div class="empty-cart">
+
+        <div class="empty-cart-icon">🛒</div>
+
+        <h3>Keranjang Masih Kosong</h3>
+
+        <p>
+        Yuk pilih minuman favoritmu dan mulai order sekarang.
+        </p>
+
+        <button class="empty-cart-btn" onclick="closeCartAndScroll()">
+        Lihat Menu
+        </button>
+
+        </div>
+        `;
 
         cartTotal.textContent = "Rp0";
 
@@ -55,53 +76,87 @@ function renderCart() {
 
     cart.forEach((item, index) => {
 
-        total += item.price * item.qty;
+    cartItems.innerHTML += `
 
-        cartItems.innerHTML += `
+    <div class="cart-item">
 
-        <div class="cart-item">
+    <img
+    src="${item.image}"
+    class="cart-image"
+    alt="${item.name}">
 
-        <h4>${item.name}</h4>
+    <div class="cart-info">
 
-        <small>${item.size}</small><br>
+    <h4>${item.name}</h4>
 
-        ${item.bean ? `<small>Bean : ${item.bean}</small><br>` : ""}
+    <p>${item.size}</p>
 
-        ${item.sugar ? `<small>Sugar : ${item.sugar}</small><br>` : ""}
+    ${item.bean ? `<small>${item.bean}</small>` : ""}
 
-        ${item.coffee ? `<small>Coffee : ${item.coffee}</small><br>` : ""}
+    ${item.sugar ? `<small>${item.sugar}</small>` : ""}
 
-        <div class="cart-bottom">
+    ${item.coffee ? `<small>${item.coffee}</small>` : ""}
 
-        <strong>${rupiah(item.price)}</strong>
+    ${item.note ? `<small><em>${item.note}</em></small>` : ""}
 
-        <div class="qty-control">
+    <div class="cart-bottom">
 
-        <button onclick="decreaseQty(${index})">−</button>
+    <strong>${rupiah(item.price * item.qty)}</strong>
 
-        <span>${item.qty}</span>
+    <div class="qty-control">
 
-        <button onclick="increaseQty(${index})">+</button>
+    <button onclick="decreaseQty(${index})">−</button>
 
-        </div>
+    <span>${item.qty}</span>
 
-        </div>
+    <button onclick="increaseQty(${index})">+</button>
 
-        </div>
+    <button
+    class="cart-remove"
+    onclick="removeItem(${index})"
+    title="Hapus Produk">
 
-        <hr>
+    <i data-lucide="trash-2"></i>
 
-        `;
+    </button>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    `;
+
+    total += item.price * item.qty;
 
     });
 
     cartTotal.textContent = rupiah(total);
 
-    cartCount.textContent = cart.length;
+    const totalQty = cart.reduce(
+
+        (sum, item) => sum + item.qty,
+
+        0
+
+    );
+
+    cartCount.textContent = totalQty;
+    cartCount.classList.add("pop");
+
+    setTimeout(() => {
+
+        cartCount.classList.remove("pop");
+
+    }, 250);
 
 }
 
 const cartSidebar = document.getElementById("cart-sidebar");
+
+const cartOverlay = document.getElementById("cart-overlay");
 
 const cartBtn = document.getElementById("cart-btn");
 
@@ -110,20 +165,27 @@ const closeCart = document.getElementById("close-cart");
 cartBtn.addEventListener("click", () => {
 
     cartSidebar.classList.add("show");
+    cartOverlay.classList.add("show");
 
 });
 
-closeCart.addEventListener("click", () => {
+function closeCartSidebar(){
 
     cartSidebar.classList.remove("show");
+    cartOverlay.classList.remove("show");
 
-});
+}
+
+closeCart.addEventListener("click", closeCartSidebar);
+
+cartOverlay.addEventListener("click", closeCartSidebar);
 
 function increaseQty(index){
 
     cart[index].qty++;
 
     renderCart();
+    lucide.createIcons();
 
 }
 
@@ -138,5 +200,32 @@ function decreaseQty(index){
     }
 
     renderCart();
+
+}
+
+function removeItem(index){
+
+    const product = cart[index];
+
+    cart.splice(index,1);
+
+    renderCart();
+
+    showToast(
+        "Produk dihapus",
+        `${product.name} berhasil dihapus`
+    );
+
+}
+
+function closeCartAndScroll(){
+
+    closeCartSidebar();
+
+    document
+    .getElementById("menu")
+    ?.scrollIntoView({
+        behavior:"smooth"
+    });
 
 }

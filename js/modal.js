@@ -212,7 +212,10 @@ addCartButton.addEventListener("click", () => {
     const order = {
 
         id: currentProduct.id,
+
         name: currentProduct.name,
+
+        image: currentProduct.image,
 
         size: selectedSize,
 
