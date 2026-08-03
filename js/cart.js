@@ -47,7 +47,11 @@ function renderCart() {
         cartItems.innerHTML = `
         <div class="empty-cart">
 
-        <div class="empty-cart-icon">🛒</div>
+        <div class="empty-cart-icon">
+
+        <i data-lucide="shopping-bag"></i>
+
+        </div>
 
         <h3>Keranjang Masih Kosong</h3>
 
@@ -65,6 +69,8 @@ function renderCart() {
         cartTotal.textContent = "Rp0";
 
         cartCount.textContent = "0";
+
+        lucide.createIcons();
 
         return;
 
@@ -144,13 +150,16 @@ function renderCart() {
     );
 
     cartCount.textContent = totalQty;
+
     cartCount.classList.add("pop");
+
+    lucide.createIcons();
 
     setTimeout(() => {
 
         cartCount.classList.remove("pop");
 
-    }, 250);
+    },250);
 
 }
 
@@ -185,7 +194,6 @@ function increaseQty(index){
     cart[index].qty++;
 
     renderCart();
-    lucide.createIcons();
 
 }
 

@@ -33,7 +33,13 @@ function renderProducts(keyword = "", category = "all") {
 
         menuGrid.innerHTML = `
         <div class="empty-search">
-        <h3>☕ Menu tidak ditemukan</h3>
+        <div class="empty-icon">
+
+        <i data-lucide="search-x"></i>
+
+        </div>
+
+        <h3>Menu tidak ditemukan</h3>
         <p>Coba gunakan kata kunci lain.</p>
         </div>
         `;
