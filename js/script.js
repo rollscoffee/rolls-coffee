@@ -4,7 +4,6 @@
 
 const menuGrid = document.getElementById("product-grid");
 const searchInput = document.getElementById("search-input");
-
 const filterButtons = document.querySelectorAll(".filter-btn");
 
 let activeFilter = "all";
@@ -43,107 +42,50 @@ function renderProducts(keyword = "", category = "all") {
         <p>Coba gunakan kata kunci lain.</p>
         </div>
         `;
-
+        lucide.createIcons();
         return;
     }
 
-    filteredProducts.forEach(product => {
+    renderProductList(
 
-        const firstPrice = Object.values(product.sizes)[0];
+        menuGrid,
 
-        const sizes = Object.entries(product.sizes)
-        .map(([size, price], index) => {
+        filteredProducts
 
-            return `
-            <button
-            class="size-btn ${index === 0 ? "active" : ""}"
-            data-price="${price}"
-            data-size="${size}">
-            ${size}
-            </button>
-            `;
+    );
 
-        }).join("");
-
-        menuGrid.innerHTML += `
-
-        <div class="product-card">
-
-        <div class="badge-group">
-
-        ${product.bestSeller
-            ? `<div class="badge best">⭐ Best Seller</div>`
-            : ""}
-
-            ${product.badge
-                ? `<div class="badge new">${product.badge}</div>`
-                : ""}
-
-                </div>
-
-            <img
-            src="${product.image}"
-            class="product-image"
-            alt="${product.name}">
-
-            <div class="product-body">
-
-            <span class="product-category">
-            ${product.category}
-            </span>
-
-            <h3>${product.name}</h3>
-
-            <p>${product.description}</p>
-
-            <div class="product-price-row">
-
-            <div class="product-price">
-
-            <small>Mulai dari</small>
-
-            <strong>${rupiah(firstPrice)}</strong>
-
-            </div>
-
-            <button
-            class="quick-add"
-            data-id="${product.id}"
-            title="Tambah cepat">
-
-            <i data-lucide="plus"></i>
-
-            </button>
-
-            </div>
-
-            <button
-            class="product-btn"
-            data-id="${product.id}">
-
-            Customize Order
-
-            </button>
-
-            </div>
-
-            </div>
-
-            `;
-
-    });
-    lucide.createIcons();
-}
+}   // <-- penutup function renderProducts()
 
 renderProducts();
 
+if (typeof renderFavorites === "function") {
+    renderFavorites();
+}
+
+if (typeof updateFavoriteCount === "function") {
+    updateFavoriteCount();
+}
+
+
 if (searchInput) {
 
-    searchInput.addEventListener("input", () => {
+    searchInput.addEventListener(
 
-        renderProducts(searchInput.value, activeFilter);
+        "input",
 
-    });
+        debounce(() => {
+
+            renderProducts(
+
+                searchInput.value,
+
+                activeFilter
+
+            );
+
+        }, 250)
+
+    );
 
 }
 
@@ -165,59 +107,97 @@ filterButtons.forEach(button => {
 
 });
 
-
 document.addEventListener("click", (e) => {
+
+    // ==========================
+    // Quick Add
+    // ==========================
 
     const quickAddBtn = e.target.closest(".quick-add");
 
-    if (!quickAddBtn) return;
+    if (quickAddBtn) {
 
-    const id = Number(quickAddBtn.dataset.id);
+        const id = Number(quickAddBtn.dataset.id);
 
-    const product = products.find(p => p.id === id);
+        const product = products.find(p => p.id === id);
 
-    if (!product) return;
+        if (!product) return;
 
-    const firstSize = Object.keys(product.sizes)[0];
+        const image = quickAddBtn
+        .closest(".product-card")
+        .querySelector(".product-image");
 
-    const firstPrice = product.sizes[firstSize];
+        flyToCart(image);
 
-    addToCart({
+        const firstSize = Object.keys(product.sizes)[0];
 
-        id: product.id,
+        const firstPrice = product.sizes[firstSize];
 
-        name: product.name,
+        addToCart({
 
-        image: product.image,
+            id: product.id,
 
-        size: firstSize,
+            name: product.name,
 
-        bean: "",
+            image: product.image,
 
-        sugar: "Normal",
+            size: firstSize,
 
-        coffee: "Normal",
+            bean: product.coffeeBean
+            ? coffeeBeans[0]
+            : null,
 
-        note: "",
+            sugar: product.sugar
+            ? sugarLevels[2]
+            : null,
 
-        qty: 1,
+            coffee: product.coffeeLevel
+            ? coffeeLevels[1]
+            : null,
 
-        price: firstPrice
+            note: "",
 
-    });
+            qty: 1,
+
+            price: firstPrice
+
+        });
+
+        return;
+
+    }
+
+    // ==========================
+    // Favorite
+    // ==========================
+
+    const favoriteBtn = e.target.closest(".favorite-btn");
+
+    if (favoriteBtn) {
+
+        toggleFavorite(Number(favoriteBtn.dataset.id));
+
+        return;
+
+    }
+
+    // ==========================
+    // Customize Order
+    // ==========================
+
+    const productBtn = e.target.closest(".product-btn");
+
+    if (productBtn) {
+
+        const id = Number(productBtn.dataset.id);
+
+        const product = products.find(p => p.id === id);
+
+        if (!product) return;
+
+        openModal(product);
+
+    }
 
 });
 
-document.addEventListener("click", (e) => {
-
-    if (!e.target.classList.contains("product-btn")) return;
-
-    const id = Number(e.target.dataset.id);
-
-    const product = products.find(p => p.id === id);
-
-    if (!product) return;
-
-    openModal(product);
-
-});

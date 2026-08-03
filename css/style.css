@@ -455,8 +455,9 @@ body{
     line-height: 1.8;
     letter-spacing: .5px;
 }
-
 .search-box{
+
+    position:relative;
 
     width:min(500px,90%);
 
@@ -468,7 +469,7 @@ body{
 
 width:100%;
 
-padding:16px 22px;
+padding:16px 22px 16px 54px;
 
 border:none;
 
@@ -2139,6 +2140,37 @@ padding:20px;
 
 }
 
+#favorite-count{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+min-width:20px;
+
+height:20px;
+
+margin-left:8px;
+
+padding:0 6px;
+
+border-radius:999px;
+
+background:var(--primary);
+
+color:#111;
+
+font-size:11px;
+
+font-weight:700;
+
+line-height:1;
+
+transition:all .3s ease;
+
+}
 .nav-link{
 
     position: relative;
@@ -2395,5 +2427,190 @@ transform: scale(1.35);
     width:18px;
 
     height:18px;
+
+}
+
+.search-box svg{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:20px;
+
+    height:20px;
+
+    color:#888;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+.search-box:focus-within svg{
+
+    color:var(--primary);
+
+}
+
+.favorite-btn{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(12px);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    z-index:20;
+
+}
+
+.favorite-btn:hover{
+
+    transform:scale(1.08);
+
+    background:var(--primary);
+
+    color:#111;
+
+}
+
+.favorite-btn svg{
+
+    width:20px;
+
+    height:20px;
+
+    transition:
+
+    transform .25s,
+
+    fill .25s,
+
+    stroke .25s;
+
+}
+
+.favorite-active{
+
+    fill:#ff4d6d;
+
+    stroke:#ff4d6d;
+
+}
+
+
+.favorite-pop{
+
+    animation:favoritePop .35s;
+
+}
+
+@keyframes favoritePop{
+
+    0%{
+
+        transform:scale(.7);
+
+    }
+
+    45%{
+
+        transform:scale(1.35);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+#favorite-count{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+min-width:20px;
+
+height:20px;
+
+margin-left:8px;
+
+padding:0 6px;
+
+border-radius:999px;
+
+background:var(--primary);
+
+color:#111;
+
+font-size:11px;
+
+font-weight:700;
+
+transition:.25s;
+
+}
+
+#favorite-count.pop{
+
+animation:favoriteCounterPop .25s;
+
+}
+
+@keyframes favoriteCounterPop{
+
+    0%{
+
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        transform:scale(1.25);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
 
 }

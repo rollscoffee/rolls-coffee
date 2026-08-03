@@ -1,6 +1,10 @@
 console.log("Cart Loaded");
 
-const cart = [];
+let cart = JSON.parse(
+
+    localStorage.getItem("cart")
+
+) || [];
 
 function addToCart(item){
 
@@ -161,6 +165,14 @@ function renderCart() {
 
     },250);
 
+    localStorage.setItem(
+
+        "cart",
+
+        JSON.stringify(cart)
+
+    );
+
 }
 
 const cartSidebar = document.getElementById("cart-sidebar");
@@ -237,3 +249,5 @@ function closeCartAndScroll(){
     });
 
 }
+
+renderCart();

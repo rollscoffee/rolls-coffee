@@ -32,7 +32,25 @@
         <ul class="nav-menu">
 
             <li><a class="nav-link" href="#home">Home</a></li>
+
             <li><a class="nav-link" href="#menu">Menu</a></li>
+
+            <li>
+
+                <a class="nav-link" href="#favorite">
+
+                    Favorite
+
+                <span id="favorite-count">
+
+                    0
+
+                </span>
+
+            </a>
+
+</li>
+
             <li><a class="nav-link" href="#about">About</a></li>
 
             <li>
@@ -116,8 +134,9 @@
 <p class="subtitle">
     Fresh Coffee • Premium Ingredients • Crafted for Every Mood
 </p>
-
 <div class="search-box">
+
+    <i data-lucide="search"></i>
 
     <input
         type="text"
@@ -125,6 +144,7 @@
         placeholder="Cari menu favoritmu...">
 
 </div>
+
 <div class="filter-group">
 
     <button class="filter-btn active" data-filter="all">
@@ -151,6 +171,32 @@
         </div>
 
     </div>
+</section>
+
+    <!-- =========================
+         FAVORITE
+    ========================== -->
+
+    <section class="favorite-section" id="favorite">
+
+    <div class="container">
+
+        <h2>Favorite Menu</h2>
+
+        <p class="subtitle">
+
+            Semua menu favoritmu akan muncul di sini.
+
+        </p>
+
+        <div
+            id="favorite-grid"
+            class="product-grid">
+
+        </div>
+
+    </div>
+
 </section>
 
     <!-- =========================
@@ -344,16 +390,24 @@
 
 </div>
 
-    <!-- Javascript -->
-    <script src="js/utils.js"></script>
-    <script src="js/database.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/checkout.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/animation.js"></script>
-    <script src="js/toast.js"></script>
+<!-- Javascript -->
+
+<script src="js/utils.js"></script>
+<script src="js/database.js"></script>
+
+<script src="js/favorite.js"></script>
+
+<script src="js/product-card.js"></script>
+
+<script src="js/script.js"></script>
+
+<script src="js/modal.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/fly-cart.js"></script>
+<script src="js/toast.js"></script>
 
 </body>
 

@@ -46,10 +46,17 @@ function openModal(product) {
     renderSugarOptions(product);
     renderCoffeeOptions(product);
 
+    noteInput.value = "";
+
     modal.style.display = "flex";
 }
+
 function closeModalWindow() {
+
     modal.style.display = "none";
+
+    noteInput.value = "";
+
 }
 
 closeModal.onclick = closeModalWindow;
@@ -193,6 +200,7 @@ function createOptionButtons(container, items) {
 }
 
 const noteInput = document.getElementById("note");
+
 const addCartButton = document.getElementById("add-cart");
 
 addCartButton.addEventListener("click", () => {
@@ -238,5 +246,7 @@ addCartButton.addEventListener("click", () => {
     addToCart(order);
 
     closeModalWindow();
+
+    flyToCart(modalImage);
 
 });
