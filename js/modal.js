@@ -21,9 +21,20 @@ function updatePrice() {
 
     let price = currentPrice;
 
-    const selectedCoffee =
-    coffeeOptions.querySelector(".active")?.textContent;
+    const selectedBean =
+    beanOptions.querySelector(".active")?.dataset.value;
 
+    const selectedCoffee =
+    coffeeOptions.querySelector(".active")?.dataset.value;
+
+    // Biaya tambahan jenis biji kopi
+    if (selectedBean === "100% Arabica") {
+        price += ARABICA_EXTRA_PRICE;
+    } else if (selectedBean === "100% Robusta") {
+        price += ROBUSTA_EXTRA_PRICE;
+    }
+
+    // Biaya tambahan level kopi
     if (selectedCoffee === "Strong Coffee (+Rp4.000)") {
         price += EXTRA_SHOT_PRICE;
     }
@@ -173,7 +184,27 @@ function createOptionButtons(container, items) {
 
         const button = document.createElement("button");
 
-        button.textContent = item;
+        // Simpan nama asli untuk perhitungan
+        button.dataset.value = item;
+
+        // Tampilan tombol
+        if (container === beanOptions) {
+
+            if (item === "100% Arabica") {
+                button.textContent = "100% Arabica  +Rp3.000";
+
+            } else if (item === "100% Robusta") {
+                button.textContent = "100% Robusta  +Rp1.500";
+
+            } else {
+                button.textContent = "House Blend  +Rp0";
+            }
+
+        } else {
+
+            button.textContent = item;
+
+        }
 
         if (index === 0) {
             button.classList.add("active");
@@ -187,7 +218,10 @@ function createOptionButtons(container, items) {
 
             button.classList.add("active");
 
-            if (container === coffeeOptions) {
+            if (
+                container === coffeeOptions ||
+                container === beanOptions
+            ) {
                 updatePrice();
             }
 

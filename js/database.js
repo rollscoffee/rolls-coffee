@@ -220,8 +220,8 @@ const products = [
 
 const coffeeBeans = [
     "House Blend",
-"100% Arabica",
-"100% Robusta"
+    "100% Arabica",
+    "100% Robusta"
 ];
 
 const sugarLevels = [
@@ -237,3 +237,7 @@ const coffeeLevels = [
 ];
 
 const EXTRA_SHOT_PRICE = 4000;
+
+// Biaya tambahan jenis biji kopi
+const ARABICA_EXTRA_PRICE = 3000;
+const ROBUSTA_EXTRA_PRICE = 1500;
