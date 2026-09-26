@@ -1488,22 +1488,36 @@ padding:20px;
     .logo span{
         display:none;
     }
+
+    /* ===== Mobile Navbar ===== */
+
     .nav-menu {
         display: flex;
         align-items: center;
-        gap: 8px;
+        justify-content: flex-end;
+        gap: 6px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .nav-menu li {
+        display: flex;
+        align-items: center;
     }
 
     .nav-menu a {
-        font-size: .82rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         white-space: nowrap;
+        font-size: 0.78rem;
+        line-height: 1;
     }
 
     .nav-link[href="#favorite"] {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        gap: 4px;
+        gap: 3px;
         white-space: nowrap;
     }
 
@@ -1512,9 +1526,9 @@ padding:20px;
     align-items: center;
     justify-content: center;
 
-    min-width: 18px;
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
 
     margin: 0;
     padding: 0;
@@ -1524,6 +1538,11 @@ padding:20px;
     font-size: 9px;
     font-weight: 700;
     line-height: 1;
+    flex-shrink: 0;
+    }
+
+    .cart-btn {
+        flex-shrink: 0;
     }
 
     .cart-btn{
