@@ -2140,43 +2140,40 @@ padding:20px;
 
 }
 
-#favorite-count{
+#favorite-count {
+display: inline-flex;
+align-items: center;
+justify-content: center;
 
-display:inline-flex;
+min-width: 22px;
+height: 22px;
 
-align-items:center;
+margin-left: 5px;
+padding: 0 6px;
 
-justify-content:center;
+border-radius: 999px;
 
-min-width:20px;
+background: var(--primary);
+color: #111;
 
-height:20px;
-
-margin-left:8px;
-
-padding:0 6px;
-
-border-radius:999px;
-
-background:var(--primary);
-
-color:#111;
-
-font-size:11px;
-
-font-weight:700;
-
-line-height:1;
-
-transition:all .3s ease;
-
+font-size: 11px;
+font-weight: 700;
+line-height: 1;
 }
+
 .nav-link{
 
     position: relative;
 
     transition: .3s;
 
+}
+
+.nav-link[href="#favorite"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
 }
 
 .nav-menu a.active{
