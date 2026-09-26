@@ -1488,13 +1488,42 @@ padding:20px;
     .logo span{
         display:none;
     }
-
-    .nav-menu{
-        gap:12px;
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
-    .nav-menu a{
-        font-size:.9rem;
+    .nav-menu a {
+        font-size: .82rem;
+        white-space: nowrap;
+    }
+
+    .nav-link[href="#favorite"] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        white-space: nowrap;
+    }
+
+    #favorite-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 18px;
+    width: 18px;
+    height: 18px;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 50%;
+
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1;
     }
 
     .cart-btn{
